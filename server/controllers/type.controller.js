@@ -7,6 +7,9 @@ const create = async (req, res) => {
   return res.json(type);
 };
 
-const getAll = async (req, res) => {};
+const getAll = async (req, res) => {
+  const types = await Type.findAll();
+  return res.json(types);
+};
 
 module.exports = { create, getAll };
