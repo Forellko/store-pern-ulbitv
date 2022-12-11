@@ -3,6 +3,7 @@ const ApiError = require('../error/api.error');
 
 const create = async (req, res) => {
   const { name } = req.body;
+  console.log(name);
   const type = await Type.create({ name });
   return res.json(type);
 };
