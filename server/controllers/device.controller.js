@@ -26,20 +26,28 @@ const create = async (req, res, next) => {
 };
 
 const getAll = async (req, res) => {
-  const { brandId, typeId } = req.body;
+  let { brandId, typeId, limit, page } = req.query;
+
+  page = page || 1;
+  limit = limit || 9;
+
+  const offset = page * limit - limit;
+
   let devices;
 
   if (!brandId && !typeId) {
-    devices = await Device.findAll();
+    devices = await Device.findAll({ limit, offset });
   }
   if (brandId && !typeId) {
-    devices = await Device.findAll({ where: { brandId } });
+    devices = await Device.findAll({ where: { brandId, limit, offset } });
   }
   if (!brandId && typeId) {
-    devices = await Device.findAll({ where: { typeId } });
+    devices = await Device.findAll({ where: { typeId, limit, offset } });
   }
   if (brandId && typeId) {
-    devices = await Device.findAll({ where: { typeId, brandId } });
+    devices = await Device.findAll({
+      where: { typeId, brandId, limit, offset },
+    });
   }
 
   return res.json(devices);
