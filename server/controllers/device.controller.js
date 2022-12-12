@@ -23,7 +23,11 @@ const create = async (req, res, next) => {
   }
 };
 
-const getAll = async (req, res) => {};
+const getAll = async (req, res) => {
+  const allDevices = await Device.findAll();
+
+  return res.json(allDevices);
+};
 
 const getOne = (req, res) => {};
 
