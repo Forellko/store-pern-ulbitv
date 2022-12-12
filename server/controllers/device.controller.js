@@ -1,11 +1,11 @@
 const uuid = require('uuid');
 const path = require('path');
-const { Device } = require('../models/models');
+const { Device, DeviceInfo } = require('../models/models');
 const ApiError = require('../error/api.error');
 
 const create = async (req, res, next) => {
   try {
-    const { name, price, brandId, typeId } = req.body;
+    const { name, price, brandId, typeId, info } = req.body;
     console.log(req.body);
     const { img } = req.files;
     let fileName = uuid.v4() + '.jpg';
@@ -18,6 +18,17 @@ const create = async (req, res, next) => {
       typeId,
       img: fileName,
     });
+
+    if (info) {
+      info = JSON.parse(info);
+      info.forEach((i) => {
+        DeviceInfo.create({
+          title: i.title,
+          description: i.description,
+          deviceId: device.id,
+        });
+      });
+    }
 
     return res.json(device);
   } catch (e) {
