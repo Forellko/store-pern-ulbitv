@@ -14,6 +14,8 @@ const create = async (req, res, next) => {
     const device = await Device.create({
       name,
       price,
+      brandId,
+      typeId,
       img: fileName,
     });
 
