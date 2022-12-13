@@ -3,6 +3,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User, Basket } = require('../models/models');
 
+const generateJWT = (id, email, role) => {
+  return jwt.sign({ id, email, role }, process.env.SECRET_KEY, {
+    expiresIn: '24h',
+  });
+};
+
 const registration = async (req, res, next) => {
   const { email, password, role } = req.body;
   if (!email || !password) {
@@ -22,9 +28,7 @@ const registration = async (req, res, next) => {
   console.log(user, 'user');
   const basket = await Basket.create({ userId: user.dataValues.id });
 
-  const token = jwt.sign({ id: user.id, email, role }, process.env.SECRET_KEY, {
-    expiresIn: '24h',
-  });
+  const token = generateJWT(user.id, user.email, user.role);
 
   return res.json({ token });
 };
