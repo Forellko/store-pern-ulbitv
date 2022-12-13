@@ -53,7 +53,9 @@ const login = async (req, res, next) => {
 };
 
 const check = async (req, res, next) => {
-  res.json({ message: 'worked' });
+  const token = generateJWT(req.user.id, req.user.email, req.user.role);
+
+  return res.json({ token });
 };
 
 module.exports = { registration, login, check };
