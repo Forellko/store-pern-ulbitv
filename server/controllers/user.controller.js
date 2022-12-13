@@ -52,6 +52,8 @@ const login = async (req, res, next) => {
   return res.json({ token });
 };
 
-const check = async (req, res, next) => {};
+const check = async (req, res, next) => {
+  res.json({ message: 'worked' });
+};
 
 module.exports = { registration, login, check };
