@@ -33,14 +33,25 @@ const registration = async (req, res, next) => {
   return res.json({ token });
 };
 
-const login = async (req, res) => {};
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ where: { email } });
 
-const check = async (req, res, next) => {
-  const { id } = req.query;
+  if (!user) {
+    return next(ApiError.internal('Пользователь не найден'));
+  }
 
-  if (!id) return next(ApiError.badRequest('id undefined'));
+  let comparePassword = bcrypt.compareSync(password, user.password);
 
-  res.json(id);
+  if (!comparePassword) {
+    return next(ApiError.internal('Указан неверный пароль'));
+  }
+
+  const token = generateJWT(user.id, user.email, user.role);
+
+  return res.json({ token });
 };
+
+const check = async (req, res, next) => {};
 
 module.exports = { registration, login, check };
