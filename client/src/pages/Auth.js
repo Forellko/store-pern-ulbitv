@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Auth() {
+export function Auth() {
   return (
     <div>Auth</div>
   )
