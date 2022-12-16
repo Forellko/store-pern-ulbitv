@@ -14,10 +14,9 @@ export function AppRouter() {
             <Route key={path} path={path} element={<Component />} exact />
           ))}
 
-        {!isAuth &&
-          publicRoutes.map(({ path, Component }) => (
-            <Route key={path} path={path} element={<Component />} exact />
-          ))}
+        {publicRoutes.map(({ path, Component }) => (
+          <Route key={path} path={path} element={<Component />} exact />
+        ))}
       </Routes>
       <Navigate replace to={SHOP_ROUTE} />
     </>
