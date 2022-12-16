@@ -23,7 +23,7 @@ export function AppRouter() {
           <Route key={path} path={path} element={<Component />} exact />
         ))}
       </Routes>
-      <Navigate replace to={SHOP_ROUTE} />
+      {/* <Navigate replace to={SHOP_ROUTE} /> // wtf. over render infinity */}
     </>
   );
 }
