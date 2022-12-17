@@ -11,13 +11,12 @@ export function Auth() {
       <Card style={{ width: 600 }} className="p-5">
         <h2 className="m-auto">Авторизация</h2>
         <Form className="d-flex flex-column">
-          <Form.Control placeholder="введите email" className="mt-4" />
+          <Form.Control placeholder="введите email" className="mt-5" />
           <Form.Control placeholder="введите пароль" className="mt-4" />
-          <Row className="d-flex justify-content-between align-items-center mt-3 px-4">
-            <span style={{ width: '300px' }}>
-              Нет аккаунта?
-              <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
-            </span>
+          <Row className="d-flex justify-content-between align-items-center mt-4 px-4">
+            <NavLink to={REGISTRATION_ROUTE} style={{ width: '300px' }}>
+              Нет аккаунта? Зарегистрируйся!
+            </NavLink>
             <Button variant="outline-success" style={{ width: '100px' }}>
               Войти
             </Button>
