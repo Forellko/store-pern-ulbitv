@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '..';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { SHOP_ROUTE } from '../utils/consts';
 
@@ -16,11 +16,16 @@ export const NavBar = () => {
         >
           Купи Девайс
         </NavLink>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
+        {user.isAuth ? (
+          <Nav className="me-auto" style={{ color: 'white' }}>
+            <Button variant="outline-light">Админ Панель</Button>
+            <Button variant="outline-light">Выйти</Button>
+          </Nav>
+        ) : (
+          <Nav className="me-auto" style={{ color: 'white' }}>
+            <Button variant="outline-light">Авторизация</Button>
+          </Nav>
+        )}
       </Container>
     </Navbar>
   );
