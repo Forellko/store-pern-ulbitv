@@ -9,7 +9,7 @@ export const NavBar = () => {
 
   return (
     <Navbar bg="dark" variant="dark">
-      <Container>
+      <Container style={{ display: 'flex', justifyContent: 'space-between' }}>
         <NavLink
           style={{ color: 'white', textDecoration: 'none' }}
           to={SHOP_ROUTE}
@@ -17,12 +17,12 @@ export const NavBar = () => {
           Купи Девайс
         </NavLink>
         {user.isAuth ? (
-          <Nav className="me-auto" style={{ color: 'white' }}>
+          <Nav style={{ color: 'white' }}>
             <Button variant="outline-light">Админ Панель</Button>
             <Button variant="outline-light">Выйти</Button>
           </Nav>
         ) : (
-          <Nav className="me-auto" style={{ color: 'white' }}>
+          <Nav style={{ color: 'white' }}>
             <Button variant="outline-light">Авторизация</Button>
           </Nav>
         )}
