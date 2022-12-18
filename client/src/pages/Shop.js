@@ -5,7 +5,7 @@ import TypeBar from '../components/TypeBar';
 export function Shop() {
   return (
     <Container>
-      <Row>
+      <Row className="mt-5">
         <Col md={3}>
           <TypeBar />
         </Col>

@@ -5,15 +5,27 @@ export default class DeviceStore {
     this._types = [
       {
         id: 1,
-        name: 'hello',
+        name: 'Холодильники',
+      },
+      {
         id: 2,
-        name: 'world',
+        name: 'Смартфоны',
+      },
+      {
+        id: 3,
+        name: 'Ноутбуки',
+      },
+      {
+        id: 4,
+        name: 'Телевизоры',
       },
     ];
     this._brands = [
       {
         id: 1,
         name: 'hello',
+      },
+      {
         id: 2,
         name: 'world',
       },
@@ -22,6 +34,8 @@ export default class DeviceStore {
       {
         id: 1,
         name: 'hello',
+      },
+      {
         id: 2,
         name: 'world',
       },
