@@ -40,6 +40,7 @@ export default class DeviceStore {
         name: 'world',
       },
     ];
+    this.selectedType = {};
     makeAutoObservable(this);
   }
 
@@ -51,6 +52,9 @@ export default class DeviceStore {
   }
   setDevices(devices) {
     this._devices = devices;
+  }
+  setSelectedType(type) {
+    this.selectedType = type;
   }
 
   get types() {
