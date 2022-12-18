@@ -4,16 +4,17 @@ import star from '../assets/star.png';
 
 export const DeviceItem = ({ device }) => {
   return (
-    <Col md={3}>
+    <Col md={3} className="mt-4">
       <Card style={{ width: 150, cursor: 'pointer' }} border={'light'}>
         <Image width={150} height={150} src={device.img} />
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="text-black-50 d-flex justify-content-between align-items-center mt-1">
           <div>Samsung</div>
-          <div>
+          <div className="d-flex align-items-center ">
             <div>{device.rating}</div>
             <Image height={20} width={20} src={star} />
           </div>
         </div>
+        <div>{device.name}</div>
       </Card>
     </Col>
   );
