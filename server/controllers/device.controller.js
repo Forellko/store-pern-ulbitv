@@ -31,7 +31,6 @@ const create = async (req, res, next) => {
 
     return res.json(device);
   } catch (e) {
-    console.log(e);
     next(ApiError.badRequest(e.message));
   }
 };
