@@ -29,7 +29,6 @@ export const CreateType = ({ show, onHide }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-danger">Закрыть</Button>
         <Button variant="outline-success" onClick={addType}>
           Добавить
         </Button>
