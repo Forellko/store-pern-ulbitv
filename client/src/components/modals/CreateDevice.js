@@ -37,7 +37,14 @@ export const CreateDevice = ({ show, onHide }) => {
             <Dropdown.Toggle>Выберите тип</Dropdown.Toggle>
             <Dropdown.Menu>
               {device.types.map((type) => (
-                <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    device.setSelected(type);
+                  }}
+                  key={type.id}
+                >
+                  {type.name}
+                </Dropdown.Item>
               ))}
             </Dropdown.Menu>
           </Dropdown>
@@ -45,7 +52,14 @@ export const CreateDevice = ({ show, onHide }) => {
             <Dropdown.Toggle>Выберите бренд</Dropdown.Toggle>
             <Dropdown.Menu>
               {device.brands.map((brand) => (
-                <Dropdown.Item key={brand.id}>{brand.name}</Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    device.setSelected(brand);
+                  }}
+                  key={brand.id}
+                >
+                  {brand.name}
+                </Dropdown.Item>
               ))}
             </Dropdown.Menu>
           </Dropdown>
