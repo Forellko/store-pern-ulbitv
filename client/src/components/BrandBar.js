@@ -6,7 +6,10 @@ import { Context } from '..';
 export default observer(() => {
   const { device } = useContext(Context);
   return (
-    <Row className="d-flex flex-row" style={{ width: '400px', height: '50px' }}>
+    <Row
+      className="d-flex flex-row justify-content-between"
+      style={{ height: '50px' }}
+    >
       {device.brands.map((brand) => (
         <Card
           key={brand.id}
