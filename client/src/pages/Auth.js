@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form, Row } from 'react-bootstrap';
-import { REGISTRATION_ROUTE, LOGIN_ROUTE } from '../utils/consts';
-import { NavLink, useLocation } from 'react-router-dom';
+import { REGISTRATION_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from '../utils/consts';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { login, registration } from '../http/userAPI';
 import { observer } from 'mobx-react-lite';
 import { Context } from '..';
@@ -10,6 +10,7 @@ export const Auth = observer(() => {
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
   const { user } = useContext(Context);
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,6 +26,8 @@ export const Auth = observer(() => {
       }
 
       user.setUser(data);
+      user.setIsAuth(true);
+      navigate(SHOP_ROUTE);
     } catch (error) {
       alert(error.response.data.message);
     }
