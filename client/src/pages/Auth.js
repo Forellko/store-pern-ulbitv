@@ -15,15 +15,19 @@ export const Auth = observer(() => {
   const [password, setPassword] = useState('');
 
   const signIn = async () => {
-    let data;
+    try {
+      let data;
 
-    if (isLogin) {
-      data = await login(email, password);
-    } else {
-      data = await registration(email, password);
+      if (isLogin) {
+        data = await login(email, password);
+      } else {
+        data = await registration(email, password);
+      }
+
+      user.setUser(data);
+    } catch (error) {
+      alert(error.response.data.message);
     }
-
-    user.setUser(data);
   };
 
   return (
