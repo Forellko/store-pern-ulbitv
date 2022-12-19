@@ -12,6 +12,7 @@ export const registration = async (email, password) => {
 };
 
 export const login = async (email, password) => {
+  console.log(email);
   const { data } = await $host.post('api/user/login', {
     email,
     password,

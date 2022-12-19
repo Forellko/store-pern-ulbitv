@@ -35,6 +35,7 @@ const registration = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
+  console.log(email);
   const user = await User.findOne({ where: { email } });
 
   if (!user) {
