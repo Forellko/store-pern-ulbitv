@@ -61,10 +61,10 @@ export const CreateDevice = ({ show, onHide }) => {
           {info.map((i) => (
             <Row className="mt-2" key={i.number}>
               <Col md={4}>
-                <Form.Control placeholder="Введите название свойства"></Form.Control>
+                <Form.Control placeholder="Введите название свойства" />
               </Col>
               <Col md={4}>
-                <Form.Control placeholder="Введите описание свойства"></Form.Control>
+                <Form.Control placeholder="Введите описание свойства" />
               </Col>
               <Col md={4}>
                 <Button
