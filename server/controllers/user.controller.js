@@ -25,7 +25,6 @@ const registration = async (req, res, next) => {
 
   const hashPassword = await bcrypt.hash(password, 5);
   const user = await User.create({ email, role, password: hashPassword });
-  console.log(user, 'user');
   const basket = await Basket.create({ userId: user.dataValues.id });
 
   const token = generateJWT(user.id, user.email, user.role);
@@ -35,7 +34,6 @@ const registration = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email);
   const user = await User.findOne({ where: { email } });
 
   if (!user) {

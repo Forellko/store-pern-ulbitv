@@ -2,12 +2,10 @@ const uuid = require('uuid');
 const path = require('path');
 const { Device, DeviceInfo } = require('../models/models');
 const ApiError = require('../error/api.error');
-const { accessSync } = require('fs');
 
 const create = async (req, res, next) => {
   try {
-    const { name, price, brandId, typeId, info } = req.body;
-    console.log(req.body);
+    let { name, price, brandId, typeId, info } = req.body;
     const { img } = req.files;
     let fileName = uuid.v4() + '.jpg';
     img.mv(path.resolve(__dirname, '..', 'static', fileName));
@@ -33,6 +31,7 @@ const create = async (req, res, next) => {
 
     return res.json(device);
   } catch (e) {
+    console.log(e);
     next(ApiError.badRequest(e.message));
   }
 };
