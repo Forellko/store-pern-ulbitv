@@ -9,7 +9,7 @@ export function AppRouter() {
 
   console.log(user);
 
-  const isAuth = false;
+  const isAuth = true;
 
   return (
     <>
