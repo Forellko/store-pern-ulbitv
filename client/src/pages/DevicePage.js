@@ -1,22 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import star from '../assets/star.png';
 
 export function DevicePage() {
-  const device = {
-    id: 4,
-    name: 'Iphone 12 pro',
-    price: 25000,
-    rating: 5,
-    img: 'none',
-  };
-  const description = [
-    { id: 1, title: 'Оперативная память', description: '5 гб' },
-    { id: 2, title: 'Камера', description: '12 мп' },
-    { id: 3, title: 'Процессор', description: 'Пентиум 3' },
-    { id: 4, title: 'Кол-во ядер', description: '2' },
-    { id: 5, title: 'Аккумулятор', description: '4000' },
-  ];
+  const [device, setDevice] = useState({ info: [] });
+  const params = useParams();
+  console.log(params);
+
+  useEffect(() => {}, []);
 
   return (
     <Container className="mt-3">
@@ -58,7 +50,7 @@ export function DevicePage() {
       </Row>
       <Row className="d-flex flex-column m-3">
         <h1>Характеристики</h1>
-        {description.map((info, index) => (
+        {device.info.map((info, index) => (
           <Row
             key={info.id}
             style={{
