@@ -34,7 +34,9 @@ export const CreateDevice = ({ show, onHide }) => {
       <Modal.Body>
         <Form>
           <Dropdown className="mt-3 mb-3">
-            <Dropdown.Toggle>Выберите тип</Dropdown.Toggle>
+            <Dropdown.Toggle>
+              {device.selectedType.name || 'Выберите тип'}
+            </Dropdown.Toggle>
             <Dropdown.Menu>
               {device.types.map((type) => (
                 <Dropdown.Item
@@ -49,7 +51,9 @@ export const CreateDevice = ({ show, onHide }) => {
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown className="mt-3 mb-3">
-            <Dropdown.Toggle>Выберите бренд</Dropdown.Toggle>
+            <Dropdown.Toggle>
+              {device.selectedBrand.name || 'Выберите бренд'}
+            </Dropdown.Toggle>
             <Dropdown.Menu>
               {device.brands.map((brand) => (
                 <Dropdown.Item
