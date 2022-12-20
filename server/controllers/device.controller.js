@@ -46,21 +46,21 @@ const getAll = async (req, res) => {
   let devices;
 
   if (!brandId && !typeId) {
-    devices = await Device.findAndCountAll({ limit, offset });
+    devices = await Device.findAndCountAll();
   }
   if (brandId && !typeId) {
     devices = await Device.findAndCountAll({
-      where: { brandId, limit, offset },
+      where: { brandId },
     });
   }
   if (!brandId && typeId) {
     devices = await Device.findAndCountAll({
-      where: { typeId, limit, offset },
+      where: { typeId },
     });
   }
   if (brandId && typeId) {
     devices = await Device.findAndCountAll({
-      where: { typeId, brandId, limit, offset },
+      where: { typeId, brandId },
     });
   }
 
